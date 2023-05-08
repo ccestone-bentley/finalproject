@@ -17,19 +17,19 @@ import streamlit_folium as stfol
 from haversine import haversine
 import plotly.express as px
 
-path = "C:/Users/Christopher Cestone/OneDrive - Bentley University/CS230/pythonProject/finalproject/"
+df_air1 = pd.read_csv("airport-codes_csv.csv")
 pd.set_option("display.max_rows", None, "display.max_columns", None, 'display.width', None, 'max_colwidth', None)
 
 # Welcome page for website-- inlcludes overview
 def welcomepage():
     st.title("Ready to explore the world? Let's check out all of airports to find where we can go!", anchor=None)
     st.header("Check out our other pages to learn more")
-    airport_image_path = Image.open(path + "airports.jpg")
+    airport_image_path = Image.open("airports.jpg")
     st.image(airport_image_path,caption=None, use_column_width=True)
 
 # Creating my first dataframe, however I need to seperate out the coordinates field to make it graphable
 # dataframe with new column to seperate the coordinates field
-df_air1 = pd.read_csv(path + "airport-codes_csv.csv")
+
 #The continent field is also not reading correctly, as NA means North America, not None
 df_air1['continent'].fillna("NA",inplace=True)
 # creating latitude and longitude fields, and splitting the old coordinates field at the comma (as that is what seperated the two)
